@@ -6,7 +6,8 @@
 /*/.idea
 /*/.mvn
 /*/*.iml
-/*/.mvnw
+/*/.gitignore
+/*/mvnw
 /*/mvnw.cmd
 
 # compiled output
@@ -46,3 +47,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+/cloud-config-server/.mvn/
