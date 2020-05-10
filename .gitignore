@@ -3,6 +3,11 @@
 /target
 /*/target
 *.iml
+/*/.idea
+/*/.mvn
+/*/*.iml
+/*/.mvnw
+/*/mvnw.cmd
 
 # compiled output
 /dist
