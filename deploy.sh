@@ -20,4 +20,4 @@ nohup java -jar zipkin.jar > logs/zipkin-service.log 2>&1 &
 echo "zipkin started"
 
 
-echo "Stack deployment completed"
+echo "Stack deployment completed" 
