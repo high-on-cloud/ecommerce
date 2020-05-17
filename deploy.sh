@@ -16,7 +16,7 @@ nohup java -jar order-service/target/*.jar > logs/order-service.log 2>&1 &
 echo "order started"
 nohup java -jar payment-service/target/*.jar > logs/payment-service.log 2>&1 &
 echo "payment started"
-nohup java -jar zipkin.jar > logs/zipkin-service.log 2>&1 &
+curl -sSL https://zipkin.io/quickstart.sh | bash -s java -jar zipkin.jar > logs/zipkin-service.log 2>&1 &
 echo "zipkin started"
 
 
