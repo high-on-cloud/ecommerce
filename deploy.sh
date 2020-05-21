@@ -4,7 +4,6 @@ kill_processes(){
 }
 
 start_processes(){
-  #deploy jars hardway
 nohup java -jar discovery-service/target/*.jar > logs/discovery-service.log 2>&1 &
 echo $! >> save_pid.txt
 echo "Discovery service started $!"
@@ -29,11 +28,25 @@ echo "order started $!"
 nohup java -jar payment-service/target/*.jar > logs/payment-service.log 2>&1 &
 echo $! >> save_pid.txt
 echo "payment started $!"
-#curl -sSL https://zipkin.io/quickstart.sh | bash -s java -jar zipkin.jar > logs/zipkin-service.log 2>&1 &
-#echo "zipkin started $!"
-
+setUpZipkin
+nohup java -jar zipkin/zipkin*.jar > logs/zipkin-service.log 2>&1 &
+echo $! >> save_pid.txt
+echo "zipkin-service started $!"
 
 echo "Stack deployment completed"
+}
+
+setUpZipkin(){
+  mkdir -p zipkin
+
+  if [ -f ./zipkin/zipkin.jar ]; then
+    echo "Zipkin jar Already exists"
+  else
+    echo "Downloading the jar file"
+    cd zipkin
+    curl -s -sSL https://zipkin.io/quickstart.sh | bash -s && echo "Download "
+    cd ../
+  fi
 }
 
 
