@@ -101,8 +101,7 @@ class Payment{
 @RefreshScope
 @Slf4j
 class OrderService{
-	@Value("${microservice.payment-service.endpoints.endpoint.uri}")
-	private String paymentServiceURL;
+	
 	private OrderRepository orderRepository;
 
 	@Lazy
@@ -114,8 +113,7 @@ class OrderService{
 	}
 	public OrderDTO persist(OrderDTO orderDTO){
 		log.info("entry>> {}",orderDTO);
-		//make payment rest call
-		log.info("payment service URL from config Server>>{}",paymentServiceURL);
+		
 		String correctPaymentUrl = "http://PAYMENT-SERVICE/api/v1/payment/save";
 		Payment payment = restTemplate.postForObject(correctPaymentUrl, orderDTO.getPayment(), Payment.class);
 		log.info("PaymentService response>> {}",payment);
